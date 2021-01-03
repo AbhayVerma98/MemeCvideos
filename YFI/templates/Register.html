@@ -1,0 +1,29 @@
+{% extends 'master.html' %}
+
+{% load static %}
+{% block content %}
+<div class="container">
+    {% if messages %}
+<ul class="message">
+	{% for message in messages %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+	{% endfor %}
+</ul>
+    {% endif %}
+</div>
+<div >
+<form method="POST" action="" enctype="multipart/form-data" class="was-validated">
+    {% csrf_token%}
+    <input type="text" name="first_name" placeholder="First name" required>
+    <input type="text" name="last_name" placeholder="Last name" required>
+    <input type="text" name="username" placeholder="Username" required>
+    <input type="email" name="email" placeholder="Email" required>
+    <input type="password" name="password1" placeholder="Password" required>
+    <input type="password" name="password2" placeholder="Confirm password" required>
+
+<button type="submit" style="margin-left:40%;" class="btn btn-outline-success" >Submit</button>
+</form>
+    </div>
+{% endblock %}

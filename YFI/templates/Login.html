@@ -1,0 +1,36 @@
+{% extends 'master.html' %}
+
+{% load static %}
+{% block content %}
+<div align="center">
+<div class="container">
+    {% if messages %}
+<ul class="message">
+	{% for message in messages %}
+    <div class="alert alert-danger">
+        {{ message }}
+    </div>
+	{% endfor %}
+</ul>
+    {% endif %}
+</div>
+
+
+<div style="height:30%;width:30%;align:center;" align="center" class="card">
+<form method="POST" action="" enctype="multipart/form-data" class="was-validated" align="center">
+    {% csrf_token%}
+
+        <div class="">
+        <label >Username:</label>
+    <input type="text" name="username"  placeholder="Username" required><br>
+        <label >Password:</label>
+    <input type="password" name="password1"  placeholder="Password" required><br>
+    <button type="submit" style="margin-left:40%;" class="btn btn-outline-success" >Submit</button>
+    </div>
+
+</form>
+    <br><br>
+    <a href="{% url 'password_reset' %}">Forget Password</a>
+    </div>
+</div>
+{% endblock %}
